@@ -23,7 +23,7 @@ new GameAnalyticsABService<"music" | "ad-location">(
 
 ## 📦 Installation
 
-<!-- [Take me to the NPM package →](https://www.npmjs.com/package/@rbxts/) -->
+[Take me to the NPM package →](https://www.npmjs.com/package/@rbxts/gameanalytics-ab-service)
 
 ```bash
 npm install @rbxts/gameanalytics-ab-service
