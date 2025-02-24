@@ -15,8 +15,8 @@ new GameAnalyticsABService<"music" | "ad-location">(
 		music: "Bossa Me (a)",
 		"ad-location": "top-left",
 	},
-	(player, key, value) => {
-		// do something with the new key and value
+	(player, values) => {
+		// do something with the loaded values
 	},
 );
 ```

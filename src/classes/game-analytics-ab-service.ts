@@ -6,13 +6,6 @@ const RunService = game.GetService("RunService");
 export class GameAnalyticsABService<Test extends string> {
 	private maid: RBXScriptConnection[] = [];
 
-	private cache = new Map<
-		Player,
-		{
-			[key: string]: string;
-		}
-	>();
-
 	private connections = new Map<Player, RBXScriptConnection>();
 
 	/**
@@ -22,14 +15,14 @@ export class GameAnalyticsABService<Test extends string> {
 	 * @param secretKey - The secret key for GameAnalytics.
 	 * @param build - The build version of the game.
 	 * @param defaults - A record of default test values.
-	 * @param onUpdate - A callback function that is called when a player's test value is updated.
+	 * @param onLoaded - A callback function that is called when a player's test values are populated
 	 */
 	constructor(
 		readonly gameKey: string,
 		readonly secretKey: string,
 		readonly build: string,
 		private readonly defaults: Record<Test, string>,
-		private readonly onUpdate: (player: Player, key: Test, value: string) => void,
+		private readonly onLoaded: (player: Player, values: { [T in Test]: string }) => void,
 	) {
 		GameAnalytics.initialize({
 			gameKey,
@@ -46,9 +39,14 @@ export class GameAnalyticsABService<Test extends string> {
 	}
 
 	private onRemoteConfigReady(player: Player) {
-		for (const [key, _] of pairs(this.defaults)) {
-			this.set(player, key as Test, this.get(player, key as Test));
+		const results = {} as { [T in Test]: string };
+
+		// eslint-disable-next-line roblox-ts/no-array-pairs
+		for (const [key] of pairs(this.defaults)) {
+			results[key as Test] = this.get(player, key as Test);
 		}
+
+		this.onLoaded(player, results);
 	}
 
 	private onPlayerAdded(player: Player) {
@@ -77,15 +75,6 @@ export class GameAnalyticsABService<Test extends string> {
 
 	private onPlayerRemoving(player: Player) {
 		this.connections.delete(player);
-	}
-
-	private set(player: Player, key: Test, value: string) {
-		this.cache.set(player, {
-			...this.cache.get(player),
-			[key]: value,
-		});
-
-		this.onUpdate(player, key, value);
 	}
 
 	private get(player: Player, key: Test) {
