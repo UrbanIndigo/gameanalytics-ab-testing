@@ -1,0 +1,43 @@
+{
+	"name": "@rbxts/gameanalytics-ab-service",
+	"version": "1.0.0",
+	"description": "A/B testing service for GameAnalytics in Roblox TypeScript",
+	"main": "out/init.lua",
+	"scripts": {
+		"build": "rbxtsc",
+		"watch": "rbxtsc -w",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"roblox",
+		"typescript",
+		"gameanalytics",
+		"ab-testing"
+	],
+	"author": "UrbanIndigo",
+	"license": "ISC",
+	"types": "out/index.d.ts",
+	"files": [
+		"out",
+		"!**/*.tsbuildinfo"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/types": "^1.0.837",
+		"@typescript-eslint/eslint-plugin": "^8.24.1",
+		"@typescript-eslint/parser": "^8.24.1",
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-prettier": "^5.2.3",
+		"eslint-plugin-roblox-ts": "^0.0.36",
+		"prettier": "^3.5.2",
+		"roblox-ts": "^3.0.0",
+		"typescript": "^5.7.3"
+	},
+	"dependencies": {
+		"@rbxts/gameanalytics": "^2.2.6-ts.1"
+	}
+}
