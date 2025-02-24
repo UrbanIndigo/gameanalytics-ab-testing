@@ -8,6 +8,10 @@
 		"watch": "rbxtsc -w",
 		"prepublishOnly": "npm run build"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/UrbanIndigo/gameanalytics-ab-testing.git"
+	},
 	"keywords": [
 		"roblox",
 		"typescript",
