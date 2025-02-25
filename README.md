@@ -4,13 +4,16 @@ This library is an A/B testing wrapper over the existing Game Analytics library,
 
 ## Quick Start
 
-To get started with the Game Analytics AB Service, you can create a new instance of the service with your game key, API key, version, and default values for your A/B testing keys. Here's an example:
+To get started with the Game Analytics AB Service, you must initialise GameAnalytics the usual way, and then construct a new GameAnalyticsABService.
 
 ```ts
+GameAnalytics.initialize({
+	gameKey: "GAME-KEY",
+	secretKey: "SECRET-KEY",
+	build: "1.0.0",
+});
+
 new GameAnalyticsABService<"music" | "ad-location">(
-	"YOUR-GAME-KEY",
-	"YOUR-API-KEY",
-	"1.0.0",
 	{
 		music: "Bossa Me (a)",
 		"ad-location": "top-left",
