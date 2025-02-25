@@ -7,6 +7,8 @@ This library is an A/B testing wrapper over the existing Game Analytics library,
 To get started with the Game Analytics AB Service, you must initialise GameAnalytics the usual way, and then construct a new GameAnalyticsABService.
 
 ```ts
+import { GameAnalytics } from "@rbxts/gameanalytics";
+
 GameAnalytics.initialize({
 	gameKey: "GAME-KEY",
 	secretKey: "SECRET-KEY",
@@ -14,6 +16,7 @@ GameAnalytics.initialize({
 });
 
 new GameAnalyticsABService<"music" | "ad-location">(
+	GameAnalytics,
 	{
 		music: "Bossa Me (a)",
 		"ad-location": "top-left",

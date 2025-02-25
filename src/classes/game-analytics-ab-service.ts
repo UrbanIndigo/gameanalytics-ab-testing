@@ -1,4 +1,4 @@
-import { GameAnalytics } from "@rbxts/gameanalytics";
+import { GameAnalyticsAB } from "../types";
 
 const Players = game.GetService("Players");
 const RunService = game.GetService("RunService");
@@ -11,10 +11,12 @@ export class GameAnalyticsABService<Test extends string> {
 	/**
 	 * Constructs an instance of the GameAnalyticsABService class. You must already have initialised GameAnalytics.
 	 *
+	 * @param gameAnalytics - A GameAnalytics instance.
 	 * @param defaults - A record of default test values.
 	 * @param onLoaded - A callback function that is called when a player's test values are populated
 	 */
 	constructor(
+		private readonly gameAnalytics: GameAnalyticsAB,
 		private readonly defaults: Record<Test, string>,
 		private readonly onLoaded: (player: Player, values: { [T in Test]: string }) => void,
 	) {
@@ -49,8 +51,8 @@ export class GameAnalyticsABService<Test extends string> {
 				return;
 			}
 
-			if (GameAnalytics.isPlayerReady(player.UserId) === true) {
-				if (GameAnalytics.isRemoteConfigsReady(player.UserId) === true) {
+			if (this.gameAnalytics.isPlayerReady(player.UserId) === true) {
+				if (this.gameAnalytics.isRemoteConfigsReady(player.UserId) === true) {
 					disconnected = true;
 					connection.Disconnect();
 					this.onRemoteConfigReady(player);
@@ -69,7 +71,7 @@ export class GameAnalyticsABService<Test extends string> {
 		const defaultValue = this.defaults[key]!;
 
 		return (
-			GameAnalytics.getRemoteConfigsValueAsString(player.UserId, {
+			this.gameAnalytics.getRemoteConfigsValueAsString(player.UserId, {
 				key,
 				defaultValue,
 			}) ?? defaultValue

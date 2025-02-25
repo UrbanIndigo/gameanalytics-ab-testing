@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/gameanalytics-ab-service",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A/B testing service for GameAnalytics in Roblox TypeScript",
 	"main": "out/init.lua",
 	"scripts": {
@@ -40,8 +40,5 @@
 		"prettier": "^3.5.2",
 		"roblox-ts": "^3.0.0",
 		"typescript": "^5.7.3"
-	},
-	"dependencies": {
-		"@rbxts/gameanalytics": "^2.2.6-ts.1"
 	}
 }
