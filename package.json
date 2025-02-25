@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/gameanalytics-ab-service",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A/B testing service for GameAnalytics in Roblox TypeScript",
 	"main": "out/init.lua",
 	"scripts": {

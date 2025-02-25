@@ -32,6 +32,7 @@ new GameAnalyticsABService<"music" | "ad-location">(
 [Take me to the NPM package →](https://www.npmjs.com/package/@rbxts/gameanalytics-ab-service)
 
 ```bash
+npm install @rbxts/gameanalytics
 npm install @rbxts/gameanalytics-ab-service
 ```
 
